@@ -1,0 +1,19 @@
+.drum-pad {
+  width: 50pt;
+  height: 50pt;
+  margin: 2pt;
+}
+
+button {
+  font-size: 30pt;
+  cursor: pointer;
+}
+
+.drum-pad:hover {
+  background-color: aquamarine;
+}
+
+.drum-pad:active {
+  background-color: orange;
+}
+
