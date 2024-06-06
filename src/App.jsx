@@ -68,7 +68,7 @@ function App() {
         }}
       >
         {soundArray.map((sound) => (
-          <Sound key={sound.id} sound={sound}></Sound> //key braucht React, immer wenn man aus Listen Komponenten durch Schleifen macht
+          <Sound key={sound.id} sound={sound}></Sound>
         ))}
       </div>
     </div>
@@ -76,24 +76,15 @@ function App() {
 }
 
 function Sound({ sound }) {
-  //hier bei onclick curlybraces nötig
-  //Daten in Objekt speichern, damit wiederverwendbar (Code nicht verändert werden muss)
-
   const audioRef = useRef(null);
 
   function playSound() {
-    const audio = document.getElementById(sound.id);
-    audio.currentTime = 0;
-    audio.play();
-  }
-
-  function f2() {
     audioRef.current?.play();
   }
 
   return (
     <>
-      <button className="drum-pad" onClick={f2} id={sound.id}>
+      <button className="drum-pad" onClick={playSound} id={sound.id}>
         {sound.letter}
         <audio
           className="clip"
