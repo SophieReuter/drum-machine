@@ -1,0 +1,11 @@
+#sounds {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 90vh;
+    width: 250px;
+    flex-wrap: wrap;
+    margin: auto
+}

@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./App.css";
 
 const soundArray = [
@@ -53,20 +53,7 @@ function App() {
   return (
     <div id="drum-machine">
       <div id="display"></div>
-
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          alignContent: "center",
-          height: "90vh",
-          width: "250px",
-          flexWrap: "wrap",
-          margin: "auto",
-        }}
-      >
+      <div id="sounds">
         {soundArray.map((sound) => (
           <Sound key={sound.id} sound={sound}></Sound>
         ))}
@@ -76,10 +63,23 @@ function App() {
 }
 
 function Sound({ sound }) {
+  const handleKeyPress = (event) => {
+    if (event.key.toLowerCase() === sound.letter.toLowerCase()) {
+      audioRef.current?.play();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyPress);
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, []);
+
   const audioRef = useRef(null);
 
   function playSound() {
-    audioRef.current?.play();
+    audioRef.current?.play(); //warum geht das nur so?
   }
 
   return (
